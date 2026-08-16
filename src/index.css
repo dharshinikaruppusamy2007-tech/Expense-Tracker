@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+}
+
+@layer base {
+  body {
+    @apply text-slate-900 transition-colors duration-200 m-0 p-0 font-sans min-h-screen relative overflow-x-hidden;
+    background-color: transparent;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url('/app-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.18; /* Slightly more visible stickers */
+    z-index: -1;
+    pointer-events: none;
+    filter: brightness(1.02) contrast(0.98);
+  }
+}
+
+.shadow-soft {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-md hover:scale-[1.01];
+}
+
+/* Ensure foreground content is readable and stays above the decorative background */
+#root {
+    position: relative;
+    z-index: 10;
+    isolation: isolate;
+    min-height: 100vh;
+}
